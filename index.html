@@ -12,8 +12,8 @@
 	
 		 :root {
 			--primary: #142f2a; /* Medium Jungle Green */
-			--secondary: #d3af37; /* Gold */
-			--accent: #9e6428; /*Skrag brown */
+			--secondary: #e0b973; /* Gold */
+			--accent: #7c5a4a; /*Skrag brown */
 			--light: #F5F5DC;
 			--dark: #321414;
 			--font-heading: "Montserrat", sans-serif; 
@@ -1305,7 +1305,7 @@
             <figure class="qr-section">
                 <h2>Scan to view our menu</h2>
                 <div id="qrcode"></div>
-                <figcaption>Point your phone's camera at the QR code to view our menu anytime</figcaption>
+                <img src="names-qrcode.png" alt="Scan to view our menu" width="200">
             </figure>
         </div>
     </div>
@@ -1329,24 +1329,6 @@
                 // Show corresponding section
                 const tabId = button.getAttribute('data-tab');
                 document.getElementById(tabId).classList.add('active');
-            });
-        });
-        
-        // Generate QR code
-        document.addEventListener('DOMContentLoaded', function() {
-            // Get the current URL
-            const url = window.location.href;
-            
-            // Generate QR code
-            QRCode.toCanvas(document.getElementById('qrcode'), url, {
-                width: 200,
-                margin: 1,
-                color: {
-                    dark: '#321414',
-                    light: '#F5F5DC'
-                }
-            }, function(error) {
-                if (error) console.error(error);
             });
         });
     </script>
