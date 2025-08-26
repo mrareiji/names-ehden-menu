@@ -48,15 +48,7 @@
 			display: block;
 			margin: 0 auto;
 		}
-		
-
-
-        
-        .tagline {
-            font-style: italic;
-            margin-bottom: 1rem;
-        }
-        
+ 
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -203,35 +195,22 @@
             font-size: 0.9rem;
         }
         
-        #qr {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 40px 20px;
-            background: linear-gradient(to right, #fff8d6, #f9e7a8);
-        }
-
         .qr-section {
             text-align: center;
-            background: white;
             padding: 20px;
             border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             max-width: 300px;
+            background: linear-gradient(to right, #fff8d6, #f9e7a8);
+            margin: 0 auto;
         }
-
+        
         .qr-section h2 {
             font-size: 1.5rem;
             margin-bottom: 15px;
-            color: #c79b4b; /* gold accent */
+            color: #c79b4b;
         }
 
-        .qr-section figcaption {
-            margin-top: 15px;
-            font-size: 0.95rem;
-            color: #555;
-        }
-        
         footer {
             text-align: center;
             padding: 2rem;
@@ -481,19 +460,19 @@
                 </div> 	
 			</div>
 			<div class="category">
-					<h2 class="gold-text">MOCKTAIL</h2>
-					<div class="menu-item">
-						<div class="item-header">
-							<span class="item-name">Juice</span>
-							<span class="item-price">$4</span>
-						</div>
-					</div>	
-					<div class="menu-item">
-						<div class="item-header">
-							<span class="item-name">Virgin Jamaica</span>
-							<span class="item-price">$5</span>
-						</div>
+				<h2 class="gold-text">MOCKTAIL</h2>
+				<div class="menu-item">
+					<div class="item-header">
+						<span class="item-name">Juice</span>
+						<span class="item-price">$4</span>
 					</div>
+				</div>	
+				<div class="menu-item">
+					<div class="item-header">
+						<span class="item-name">Virgin Jamaica</span>
+						<span class="item-price">$5</span>
+					</div>
+				</div>
 					<div class="menu-item">
 						<div class="item-header">
 							<span class="item-name">Virgin Mojito</span>
@@ -1300,14 +1279,13 @@
                 </div>
         </div>
 		</div>
-<!--QR Code PAGE -->				
+<!--QR Code PAGE -->	
         <div class="menu-section" id="qr">
-            <figure class="qr-section">
+            <div class="qr-section">
                 <h2>Scan to view our menu</h2>
-                <div id="qrcode"></div>
                 <img src="names-qrcode.png" alt="Scan to view our menu" width="200">
-            </figure>
-        </div>
+            </div>
+        </div>			
     </div>
     
     <footer>
@@ -1317,20 +1295,32 @@
 
     <script>
         // Tab functionality
-        document.querySelectorAll('.tab-button').forEach(button => {
-            button.addEventListener('click', () => {
-                // Remove active class from all buttons and sections
-                document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-                document.querySelectorAll('.menu-section').forEach(section => section.classList.remove('active'));
-                
-                // Add active class to clicked button
-                button.classList.add('active');
-                
-                // Show corresponding section
-                const tabId = button.getAttribute('data-tab');
-                document.getElementById(tabId).classList.add('active');
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const sections = document.querySelectorAll('.menu-section');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const tabId = button.getAttribute('data-tab');
+                    const section = document.getElementById(tabId);
+
+                    if (!section) {
+                        console.warn(`No element found with id "${tabId}"`);
+                        return;
+                    }
+
+                    // Remove active class from all buttons and sections
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    sections.forEach(sec => sec.classList.remove('active'));
+
+                    // Add active class to clicked button and corresponding section
+                    button.classList.add('active');
+                    section.classList.add('active');
+                });
             });
         });
+
     </script>
+
 </body>
 </html>
