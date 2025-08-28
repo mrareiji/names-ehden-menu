@@ -221,6 +221,17 @@
             gap: 12px;
             flex-wrap: wrap;
         }
+
+        .location a {
+            color: var(--secondary); /* Change to your desired color */
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .location a:hover {
+            color: var(--accent); /* Change to your desired hover color */
+            text-decoration: underline;
+        }
         
         .icon {
             color: var(--accent);
@@ -293,7 +304,31 @@
             .footer-content {
                 gap: 12px;
             }
+
+        /* Scroll to top button */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--accent);
+            color: var(--light);
+            border: none;
+            cursor: pointer;
+            display: none;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
         }
+
+        .scroll-to-top:hover {
+            background-color: var(--secondary);
+            transform: translateY(-5px);
+        }   
+                }
     </style>
 </head>
 <body>
@@ -1354,7 +1389,13 @@
                     <div class="icon">
                         <i class="fas fa-map-marker-alt"></i>
                     </div>
-                    <div class="text">Al Miden, Ehden Lebanon</div>
+                    <div class="text">
+                        <a href="https://maps.app.goo.gl/sgYH9g8wNaBVCMVo6" 
+                        target="_blank" 
+                        rel="noopener noreferrer">
+                            Names Ehden Pub, Al Miden Ehden Lebanon
+                        </a>
+                    </div>
                 </div>
                 
                 <div class="hours">
@@ -1383,6 +1424,11 @@
             </div>
         </footer>
 
+    <!-- Scroll to top button -->
+    <button id="scrollToTopBtn" class="scroll-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
     <script>
         // Tab functionality
         document.addEventListener('DOMContentLoaded', () => {
@@ -1410,6 +1456,30 @@
             });
         });
 
+        // Scroll to top functionality
+        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+
+        // Show button when user scrolls to the bottom of the page
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.scrollY;
+            const documentHeight = document.documentElement.scrollHeight;
+            const windowHeight = window.innerHeight;
+            
+            // Show button when user is near the bottom (last 20% of page)
+            if (scrollPosition > (documentHeight - windowHeight) * 0.8) {
+                scrollToTopBtn.style.display = 'block';
+            } else {
+                scrollToTopBtn.style.display = 'none';
+            }
+        });
+
+        // Scroll to top when button is clicked
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
 
     </script>
 
