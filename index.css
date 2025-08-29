@@ -97,7 +97,7 @@
 			margin-bottom: 1rem;
 			flex-direction: row-reverse; /* This reverses the order */
 			position: relative;
-            /*border-bottom: 2px solid var(--secondary);*/
+            border-bottom: 2px solid var(--accent);
 		}
 		
 		.serving-types {
@@ -109,7 +109,7 @@
 			font-family: "Montserrat", sans-serif;
 			font-weight: 600;
 			font-size: 0.9rem;
-			color: var(--accent);
+			color: var(--secondary);
 		}
 		
         .category {
@@ -141,7 +141,8 @@
             padding-bottom: 0.5rem;
 		    margin: 0;
 			flex-grow: 1;
-			border-bottom: 2px solid var(--secondary);
+
+
         }
 
         .menu-item {
@@ -157,13 +158,13 @@
         }
         
         .item-name {
-			color: var(--accent);
+			color: var(--secondary);
             font-weight: bold;
             font-size: 1.1rem;
         }
         
         .item-price {
-            color: var(--accent);
+            color: var(--secondary);
             font-weight: bold;
         }
 		
@@ -175,14 +176,15 @@
 		.price-glass, .price-bottle {
 			font-family: "Montserrat", sans-serif;
 			font-weight: 600;
-			color: var(--accent);
+			color: var(--secondary);
 			min-width: 40px;
 			text-align: center;
 		}
         
         .item-desc {
-            color: var(--secondary);
+            color: var(--accent);
             font-size: 0.9rem;
+            font-weight: bold;
         }
 
         footer {
