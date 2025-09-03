@@ -276,6 +276,42 @@
             color: var(--secondary);
             font-size: 0.9rem;
         }
+
+        /* Filter container styling */
+.filter-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 1rem 0 2rem;
+    padding: 0 1rem;
+}
+
+/* Filter buttons */
+.filter-btn {
+    padding: 0.5rem 1rem;
+    background-color: var(--secondary);
+    color: var(--dark);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+}
+
+.filter-btn:hover {
+    background-color: var(--accent);
+    color: var(--light);
+    transform: translateY(-2px);
+}
+
+.filter-btn.active {
+    background-color: var(--accent);
+    color: var(--light);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
         
         @media (max-width: 600px) {
             .menu-title {
@@ -292,6 +328,15 @@
             
             .footer-content {
                 gap: 12px;
+            }
+
+             .filter-container {
+            gap: 5px;
+            }
+    
+            .filter-btn {
+             padding: 0.4rem 0.8rem;
+             font-size: 0.8rem;
             }
 
         /* Scroll to top button */

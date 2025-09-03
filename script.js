@@ -48,3 +48,56 @@
                 behavior: 'smooth'
             });
         });
+
+
+// Add filtering options for categories
+function addFilterOptions() {
+    // This would be especially useful for the drinks page
+    const drinksSection = document.getElementById('drinks');
+    if (!drinksSection) return;
+    
+    const filterHTML = `
+        <div class="filter-container" style="margin: 15px 0; display: flex; flex-wrap: wrap; gap: 10px;">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="vodka">Vodka</button>
+            <button class="filter-btn" data-filter="gin">Gin</button>
+            <button class="filter-btn" data-filter="whiskey">Whiskey</button>
+            <button class="filter-btn" data-filter="tequila">Tequila</button>
+            <button class="filter-btn" data-filter="rum">Rum</button>
+            <button class="filter-btn" data-filter="wine">Wine</button>
+            <button class="filter-btn" data-filter="prosecco">Prosecco</button>
+            <button class="filter-btn" data-filter="beer">Beer</button>
+            <button class="filter-btn" data-filter="cold beverages">Cold Beverages</button>
+        </div>
+    `;
+    
+    drinksSection.insertAdjacentHTML('afterbegin', filterHTML);
+    
+    const filterButtons = drinksSection.querySelectorAll('.filter-btn');
+    
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Update active button
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            
+            const filter = button.getAttribute('data-filter');
+            const categories = drinksSection.querySelectorAll('.category');
+            
+            categories.forEach(category => {
+                const categoryTitle = category.querySelector('.gold-text').textContent.toLowerCase();
+                
+                if (filter === 'all' || categoryTitle.includes(filter)) {
+                    category.style.display = 'block';
+                } else {
+                    category.style.display = 'none';
+                }
+            });
+        });
+    });
+}
+
+// Initialize all features
+document.addEventListener('DOMContentLoaded', () => {
+    addFilterOptions();
+});
